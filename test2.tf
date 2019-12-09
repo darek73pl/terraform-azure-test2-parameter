@@ -85,10 +85,6 @@ output "subnet_amount" {
     value =length(module.vnet1.vnet_subnet_ids)
 } 
 
-output "subnet1_id" {
-    value = module.vnet1.vnet_subnet_ids[1]
-}
-
 output "vm_names_1" {
     value = module.web_tier.vm_names
 }
