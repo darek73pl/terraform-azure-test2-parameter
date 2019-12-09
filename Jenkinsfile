@@ -12,9 +12,6 @@ pipeline {
         ARM_STATE_CONTAINER_NAME = "terraform-state-test2-parameter"
 
         TERRAFORM_PATH           = "${getTerraformPath()}"
-        
-        // name of terraform workspace: "dev" or "prod" 
-        //TERRAFORM_WORKSPACE      = "%WORKSPACE%"
     }
     
     stages {
@@ -32,10 +29,11 @@ pipeline {
         }
         stage ('terra-create-and-choose-workspace') {
             steps {
+                // TERRAFORM_WORKSPACE given as job parameter
                 bat label: '', returnStatus: true, script: "\"%TERRAFORM_PATH%\\terraform\" workspace new %TERRAFORM_WORKSPACE%"
                 bat "\"%TERRAFORM_PATH%\\terraform\" workspace select %TERRAFORM_WORKSPACE%"
             }
-        } /*
+        } 
         stage ('terra-plan') {
             steps {
                 withCredentials([string(credentialsId: 'Terraform-Azure-LocalAdmin-Password', variable: 'ADMIN_PASS')]) {
@@ -49,7 +47,7 @@ pipeline {
                     bat "\"%TERRAFORM_PATH%\\terraform\" apply -var \"vm_admin_password=%ADMIN_PASS%\" -auto-approve"
                 } 
             } 
-        } */
+        } 
     }
 }
 
