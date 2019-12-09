@@ -14,7 +14,7 @@ pipeline {
         TERRAFORM_PATH           = "${getTerraformPath()}"
         
         // name of terraform workspace: "dev" or "prod" 
-        TERRAFORM_WORKSPACE      = "%WORKSPACE%"
+        //TERRAFORM_WORKSPACE      = "%WORKSPACE%"
     }
     
     stages {

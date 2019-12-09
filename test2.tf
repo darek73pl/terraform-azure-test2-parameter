@@ -79,7 +79,7 @@ settings = <<SETTINGS
     }
     SETTINGS
 */
-}
+//}
 
 output "subnet_amount" {
     value =length(module.vnet1.vnet_subnet_ids)
